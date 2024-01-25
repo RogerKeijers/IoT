@@ -10,7 +10,6 @@
 // Maak gebruik van de Grove-LCD RGB Backlight Library
 #include <rgb_lcd.h>
 
-
 // Maak gebruik van onderstaande Wifi credentials
 const char* ssid = "iPhone11 Roger Keijers";
 const char* password = "welkom01";
@@ -72,7 +71,7 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-// Deze function gaat de berichten van de MQTT server ophalen.
+// Deze function gaat de berichten van de MQTT-broker ophalen.
 // Berichten worden gelijk op het LCD-scherm getoond.
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -94,7 +93,7 @@ void reconnect() {
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     
-    // Attempt to connect
+    // Maak verbinding met MQTT-broker. Gebruik de MQTT credentials.
     if (client.connect(clientId.c_str(),"mqtt_sub","subpass")) {
       Serial.println("connected");
 
