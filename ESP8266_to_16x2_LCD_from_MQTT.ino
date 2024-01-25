@@ -12,14 +12,11 @@
 
 
 // Maak gebruik van onderstaande Wifi credentials
-//const char* ssid = "iPhone11 Roger Keijers";
-//const char* password = "welkom01";
-const char* ssid = "Roger_thuis";
-const char* password = "Roger4572!";
+const char* ssid = "iPhone11 Roger Keijers";
+const char* password = "welkom01";
 
 // Vul het IP-adres van je Raspberry Pi in ( = MQTT-broker )
-//const char* mqtt_server = "172.20.10.9";
-const char* mqtt_server = "192.168.178.55";
+const char* mqtt_server = "172.20.10.9";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
