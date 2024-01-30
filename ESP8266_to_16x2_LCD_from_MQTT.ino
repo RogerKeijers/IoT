@@ -69,6 +69,9 @@ void setup_wifi() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  Serial.print("MAC address: ");
+  Serial.println(WiFi.macAddress());
+  Serial.println("");
 }
 
 // Deze function gaat de berichten van de MQTT-broker ophalen.
