@@ -1,9 +1,18 @@
 // Demo code for Grove - Temperature Sensor V1.1/1.2
 
+// /==============================\
+// | T-Sensor | Kabel  | Arduino  |
+// |----------|--------|----------|
+// |   SIG    | Geel   |   A0     |
+// |   NC     | Wit    |          |
+// |   VCC    | Rood   |   5V     |
+// |   GND    | Zwart  |   GND    |
+// \==============================/
+
 #include <math.h>
 
 const int B = 4275;               // B value of the thermistor
-const int32_t R0 = 100000;            // R0 = 100k
+const int32_t R0 = 100000;        // R0 = 100k
 const int pinTempSensor = A0;     // Grove - Temperature Sensor connect to A0
 
 #if defined(ARDUINO_ARCH_AVR)
