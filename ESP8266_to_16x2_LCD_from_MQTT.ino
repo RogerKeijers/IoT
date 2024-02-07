@@ -1,3 +1,12 @@
+// /==============================\
+// | 16x2 LCD | Kabel  | NodeMCU  |
+// |----------|--------|----------|
+// |   GND    | Zwart  |   GND    |
+// |   VCC    | Rood   |   VIN    |
+// |   SDA    | Wit    |   D2     |
+// |   SCL    | Geel   |   D1     |
+// \==============================/
+
 // Maak gebruik van de ESP8266 Wifi Library
 #include <ESP8266WiFi.h>
 
