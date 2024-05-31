@@ -1,4 +1,5 @@
 #include <Arduino.h>
+
 #ifdef ESP32
 #include <WiFi.h>
 #include <AsyncTCP.h>
@@ -6,6 +7,7 @@
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #endif
+
 #include <ESPAsyncWebServer.h>
 
 #define UP 1
@@ -42,8 +44,13 @@ std::vector<MOTOR_PINS> motorPins =
   {32, 33},  //BACK_LEFT_MOTOR   
 };
 
-const char* ssid     = "Roger-01";
-const char* password = "Roger-01";
+const char* ssid     = "Roger=01";
+const char* password = "Roger=01";
+
+// Stel het statische IP-adres in
+IPAddress local_IP(10, 20, 24, 5);
+IPAddress gateway(10, 20, 24, 1);
+IPAddress subnet(255, 255, 255, 0);
 
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
@@ -88,7 +95,7 @@ const char* htmlHomePage PROGMEM = R"HTMLHOMEPAGE(
      
      <table id="mainTable" style="width:400px;margin:auto;table-layout:fixed" CELLSPACING=10>
       <tr>
-        <td ontouchstart='onTouchStartAndEnd("0")' ontouchend='onTouchStartAndEnd("0")'><span class="arrows" >Roger-01</span></td>
+        <td ontouchstart='onTouchStartAndEnd("0")' ontouchend='onTouchStartAndEnd("0")'><span class="arrows" >Roger=01</span></td>
       </tr>
            
       <tr>
@@ -328,9 +335,14 @@ void setUpPinModes()
 
 void setup(void) 
 {
+    
   setUpPinModes();
   Serial.begin(115200);
 
+  // Configureer statisch IP
+  WiFi.softAPConfig(local_IP, gateway, subnet);
+
+  // Maak een WiFi Access Point
   WiFi.softAP(ssid, password);
   IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
@@ -348,5 +360,6 @@ void setup(void)
 
 void loop() 
 {
+  
   ws.cleanupClients(); 
 }
